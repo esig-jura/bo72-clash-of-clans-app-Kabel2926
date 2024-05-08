@@ -33,6 +33,7 @@ Remplacer le fichier `public/favicon.ico` par celui de la maquette `_maquette/fa
 ### 2.5 Ajouter les images
 Copier le dossier `_maquette/img/` de la maquette dans `public/`
 ### 2.6 Résultat
+
 ![2-coc-avec-css.png](_medias%2F2-coc-avec-css.png)
 
 ## 3. Code HTML de base 
