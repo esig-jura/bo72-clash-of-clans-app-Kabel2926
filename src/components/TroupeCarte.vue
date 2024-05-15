@@ -1,50 +1,54 @@
 <script setup>
-defineProps({
-  or: {
-    type: Number,
-    required: true
+// Définition des propriétés du composant
+// Version simple : const props = defineProps(['troupe', 'or'])
+const props = defineProps({
+  or: { // Nom de la propriété
+    type: Number, // Type de la propriété
+    required: true, // Propriété obligatoire
   },
-  troupe:{
+  troupe: {
     type: Object,
-    required: true
+    required: true,
   }
-});
+})
 
+// Définition des événments du composant
 const emit = defineEmits(["former"]);
-
-const formerTroupe = (troupe) => {
-  emit("former", troupe);
-};
 </script>
 
 <template>
   <article>
-    <header :style="'background: linear-gradient(60deg, #3B3B3B  0%, ' + troupe.couleur + ' 100%);'">
-      <img :src="troupe.image" :alt="troupe.nom">
+    <header :style="`background: linear-gradient(60deg,#3B3B3B 0%, ${troupe.couleur} 100%);`">
+      <img :src="troupe.image"
+           :alt="troupe.nom">
     </header>
-    <div class="level" :style="'color: ' + troupe.couleur + ' ;'">
+    <div class="level" :style="{color: troupe.couleur}">
       Niveau {{ troupe.niveau }}
     </div>
     <h2 class="name">{{ troupe.nom }}</h2>
+
     <button
-        :style="`background-color: ${troupe.couleur}`"
-        @click="formerTroupe(troupe)"
+        @click="emit('former', troupe)"
+        :style="{backgroundColor: troupe.couleur}"
         :disabled="or < troupe.cout"
     >
-      Former
-      <img src="/img/piece-or.png" alt="Former" />
+      Former <img src="/img/piece-or.png" alt="Former">
     </button>
+
     <p class="description">{{ troupe.description }}</p>
     <footer>
-      <div class="training" :style="'background-color: ' + troupe.couleur + ' ;'">
+      <div class="training"
+           :style="{backgroundColor: troupe.couleur}">
         <div>{{ troupe.formation }}<sup>sec</sup></div>
         <div>Formation</div>
       </div>
-      <div class="speed" :style="'background-color: ' + troupe.couleur + ' ;'">
+      <div class="speed"
+           :style="{backgroundColor: troupe.couleur}">
         <div>{{ troupe.vitesse }}</div>
         <div>Vitesse</div>
       </div>
-      <div class="cost" :style="'background-color: ' + troupe.couleur + ' ;'">
+      <div class="cost"
+           :style="{backgroundColor: troupe.couleur}">
         <div>{{ troupe.cout }}</div>
         <div>Coût</div>
       </div>
@@ -69,6 +73,7 @@ header img {
   margin-top: -65px;
   margin-left: -70px;
 }
+
 /*** Contenu Carte Troupe ***/
 .level {
   text-transform: uppercase;
