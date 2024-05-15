@@ -12,7 +12,7 @@ defineProps({
     <div>
       <img src="/img/piece-or-note.jpg" alt="Solde Or">
       {{ or.toLocaleString('fr-CH') }}
-      pièces d'or
+     pièces d'or
     </div>
     <div>
       <img src="/img/troupes-icon.png" alt="Troupes">
